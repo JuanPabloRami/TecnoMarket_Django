@@ -1,0 +1,19 @@
+{%extends 'layout.html'%}
+{%load static%}
+
+{%block js%}
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+{%endblock%}
+
+{%block css%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+{%endblock%}
+
+    {%block content%}
+            <h2>Galería de nuestra tienda</h2>
+            <br><br>
+            <div class="galeria">
+                <a data-fancybox="gallery" href="{%static 'img/tienda/tienda1.jpg'%}"><img src="{%static 'img/tienda/tienda1.jpg'%}"></a>
+            </div>
+    {%endblock%}
+

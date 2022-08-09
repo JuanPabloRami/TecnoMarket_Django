@@ -1,0 +1,54 @@
+{%extends 'layout.html'%}
+{%load static%}
+
+{%block css%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+{%endblock%}
+
+{%block js%}
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.slider').bxSlider({
+            mode: 'fade',//horizontal, vertical, fade
+            auto: true,
+            pause: 2000
+        });
+    });
+</script>
+{%endblock%}
+
+    {%block content%}
+
+            <div class="slider">
+                <div>
+                    <img src="{%static 'img/banner/banner1.png'%}" alt="">
+                </div>
+                <div>
+                    <img src="{%static 'img/banner/banner2.png'%}" alt="">
+                </div>
+                <div>
+                    <img src="{%static 'img/banner/banner3.png'%}" alt="">
+                </div>
+            </div>
+
+        <h2>Productos</h2>
+        <div class="productos">
+
+            <div class="producto">
+
+                <div class="contenedor_producto">
+
+                    <img src="{%static 'img/lenovo_tablet.jpeg'%}" alt="imagen producto">
+                    <div class="detalle">
+                        <h5>Lenovo</h5>
+                        <h2>Tablet</h2>
+                        <h3>$120.000</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endblock%}
+
+
