@@ -1,5 +1,6 @@
 {%extends 'layout.html'%}
 {%load static%}
+{%load humanize%}
 
 {%block css%}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -33,20 +34,27 @@
             </div>
 
         <h2>Productos</h2>
+
         <div class="productos">
-
+            {%for p in productos%}
+            
             <div class="producto">
-
+                
                 <div class="contenedor_producto">
-
-                    <img src="{%static 'img/lenovo_tablet.jpeg'%}" alt="imagen producto">
+                    {%if p.imagen%}
+                    <img src={{p.imagen.url}} alt="imagen producto">
+                    {%endif%}
                     <div class="detalle">
-                        <h5>Lenovo</h5>
-                        <h2>Tablet</h2>
-                        <h3>$120.000</h3>
+                        <h5>{{p.marca | capfirst}}</h5>
+                        <h2>{{p.nombre| title}}</h2>
+                        <h3>${{p.precio| intcomma}}</h3>
                     </div>
+                    
                 </div>
+                
             </div>
+            {%endfor%}
+
         </div>
     </div>
     {%endblock%}

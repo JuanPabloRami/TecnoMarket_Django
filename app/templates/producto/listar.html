@@ -1,0 +1,71 @@
+{%extends 'layout.html'%}
+
+{%block js%}
+<script>
+    function eliminarProducto(id){
+        swal.fire({
+            "title":"¿Estas seguro?",
+            "text":"Esta accion no se puede deshacer",
+            "icon":"question",
+            "showCancelButton":true,
+            "cancelButtonText":"Cancelar",
+            "confirmButtonText":"Si,Deseo eliminarlo",
+            "reverseButtons":true,
+            "confirmButtonColor":"red"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/eliminar-producto/"+id+"/"
+            }
+        })
+    }
+</script>
+{%endblock%}
+
+
+{%block content%}
+{%load humanize%}
+{%load crispy_forms_tags%}  
+<br><br><br>
+<div class="card">
+    <div class="card-body">
+        <h2>Mis productos</h2>
+        <div class="d-flex justify-content-end" >
+            <a href="{% url 'agregarProducto' %}"><input type="button" value="Nuevo Producto" class="btn btn-primary"></a>
+        </div>
+        <hr>
+        <table class="table table-striped table-hover table-responsive-sm">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>¿Es Nuevo?</th>
+                <th>Acciones</th>
+            </tr>
+        
+            {%for p in entity%}
+            <tr>
+                <td>{{p.nombre | title}}</td>
+                <td>${{p.precio | intcomma}}</td>
+                <td>{{p.marca | title}}</td>
+                <td>
+                    {%if p.nuevo %}
+                    SI
+                    {%else%}
+                    NO
+                    {%endif%}
+                </td>
+                <td>
+                    <a href="{%url 'modificarProducto' p.id %}" class="btn btn-info btn-sm">Modificar</a>
+                    <a href="#" onclick="eliminarProducto({{p.id}})" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+        
+            </tr>
+            {%endfor%}
+        </table>
+        {%include 'paginator.html' %}
+    </div>
+</div>
+
+{%endblock%}
+
