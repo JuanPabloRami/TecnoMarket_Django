@@ -21,17 +21,17 @@
 
     {%block content%}
 
-            <div class="slider">
-                <div>
-                    <img src="{%static 'img/banner/banner1.png'%}" alt="">
-                </div>
-                <div>
-                    <img src="{%static 'img/banner/banner2.png'%}" alt="">
-                </div>
-                <div>
-                    <img src="{%static 'img/banner/banner3.png'%}" alt="">
-                </div>
+        <div class="slider">
+            <div>
+                <img src="{%static 'img/banner/banner1.png'%}" alt="">
             </div>
+            <div>
+                <img src="{%static 'img/banner/banner2.png'%}" alt="">
+            </div>
+            <div>
+                <img src="{%static 'img/banner/banner3.png'%}" alt="">
+            </div>
+        </div>
 
         <h2>Productos</h2>
 
@@ -43,6 +43,8 @@
                 <div class="contenedor_producto">
                     {%if p.imagen%}
                     <img src={{p.imagen.url}} alt="imagen producto">
+                    {%else%}
+                    <img src="{%static 'img/404.jpg'%}" alt="imagen producto">
                     {%endif%}
                     <div class="detalle">
                         <h5>{{p.marca | capfirst}}</h5>
@@ -56,6 +58,8 @@
             {%endfor%}
 
         </div>
+        <br><br>
+
     </div>
     {%endblock%}
 

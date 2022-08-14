@@ -93,6 +93,7 @@ nav a {
 .producto {
     width: 25%;
     margin-top: 20px;
+
 }
 
 .producto img {
@@ -103,11 +104,16 @@ nav a {
 
 .producto .detalle {
     padding: 5px;
+    height:45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .producto .contenedor_producto {
     background-color: white;
     width: 80%;
+    height: 364px;
     margin: auto;
 }
 

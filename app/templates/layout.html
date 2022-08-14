@@ -28,12 +28,15 @@
                 <ul>
                     <li><a href="{% url 'contacto' %}">Contacto</a></li>
                     <li><a href="{% url 'galeria' %}">Galería</a></li>
+                    {%if perms.app.view_producto %}
                     <li><a href="{%url 'listarProducto'%}">Mis Productos</a></li>
+                    {%endif%}
                     {%if user.is_authenticated%}
                     <li><a href="#">@{{user.username}}</a></li>
                     <li><a href="{%url 'logout'%}">Cerrar sesion</a></li>
                     {%else%}
                     <li><a href="{%url 'login'%}">Iniciar Sesion</a></li>
+                    <li><a href="{%url 'registro'%}">Registrate</a></li>
                     {%endif%}
 
                     <li><a href="/admin">Administrador</a></li>
