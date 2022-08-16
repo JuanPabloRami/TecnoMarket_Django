@@ -1,0 +1,21 @@
+{%extends 'layout.html'%}
+{%block mensajeria%}
+
+{%endblock%}
+
+{% block content%}
+<br><br><br><br><br><br>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h1>Error al intentar loguearse con facebook</h1>
+                <p>Intentalo de nuevo mas tarde</p>
+                <a href="{%url 'login'%}"><input type="button" value="Volver A login" class="btn btn-primary"></a>
+                <a href="{%url 'home'%}"><input type="button" value="Volver Al inicio" class="btn btn-primary"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

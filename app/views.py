@@ -2,15 +2,39 @@ from math import prod
 from django.http import HttpResponse
 from django.shortcuts import render,redirect, get_object_or_404
 from cgitb import text
-from .models import Producto
+from .models import Producto,Marca
 from .forms import ContactoForm, ProductoForm, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required, permission_required
+from rest_framework import viewsets
+from .serializers import ProductoSerializer,MarcaSerializer
 
 # Create your views here.
+
+class MarcaViewSet(viewsets.ModelViewSet):
+    queryset = Marca.objects.all()
+    serializer_class = MarcaSerializer
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+    def get_queryset(self):
+        productos = Producto.objects.all()
+        nombre = self.request.GET.get('nombre')
+
+        if nombre:
+            productos = productos.filter(nombre__contains = nombre)
+
+        return productos
+
+
+def errorFacebook(request):
+    return render(request,'registration/errorFacebook.html')
+
 
 def index(request):
     productos = Producto.objects.all()
@@ -110,3 +134,4 @@ def registro(request):
         data["form"] = formulario
 
     return render(request, 'registration/registro.html',data)
+
